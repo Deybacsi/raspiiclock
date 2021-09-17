@@ -60,7 +60,7 @@ void init_bg_obj3d(){
     OBJ3DOBJECT=rand()%MAXOBJ3DOBJECTS;
 
 
-    OBJ3DOBJECT=2;
+    //OBJ3DOBJECT=5;
     switch (OBJ3DOBJECT) {
         case 0:     // sphere-like object
             MAXOBJ3DDIST=round(SCREENY*0.3);
@@ -101,7 +101,7 @@ void init_bg_obj3d(){
             break;
 
         case 3:     // sphere
-            MAXOBJ3DDIST=round(SCREENY);
+            MAXOBJ3DDIST=round(SCREENY*0.5);
             MINOBJ3DDIST=MAXOBJ3DDIST-1;
             circleslicesno=6;
             circlepointsno=round(MAXOBJ3D/circleslicesno);
@@ -121,7 +121,7 @@ void init_bg_obj3d(){
 
             break;    
         case 4:     // cube
-            MAXOBJ3DDIST=round(SCREENY/4*3);
+            MAXOBJ3DDIST=round(SCREENY*0.4);
             MINOBJ3DDIST=MAXOBJ3DDIST-1;
             for (i=0; i<MAXOBJ3D; i++) {
                 OBJS3D[i].x=-MAXOBJ3DDIST;
@@ -132,7 +132,7 @@ void init_bg_obj3d(){
             } 
             break;
         case 5:     // cube2
-            MAXOBJ3DDIST=round(SCREENY/3*2);
+            MAXOBJ3DDIST=round(SCREENY*0.4);
             MINOBJ3DDIST=MAXOBJ3DDIST-1;
             for (i=0; i<MAXOBJ3D; i++) {
                 OBJS3D[i].x=MAXOBJ3DDIST * OBJ3DNEGPOS[rand() % 2];

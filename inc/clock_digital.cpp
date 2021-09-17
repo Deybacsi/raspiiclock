@@ -65,3 +65,13 @@ void draw_clock_digital(int cx, int cy) {
     }
     LAST_TIMESTR[0] = ACT_TIMESTR[0];
 };
+
+void draw_price(int cx, int cy, string &btcprice) {
+    int digit,x,y,dx,dy;
+    CLOCKCHAR.bcol=CLOCKCOLOR;
+    dx=DIGITDESIGNS[ACTDIGITDESIGN].x;
+    dy=DIGITDESIGNS[ACTDIGITDESIGN].y;
+    for (digit=0; digit<btcprice.length(); digit++) {
+        draw_clock_digit(CLOCKLAYER, cx+dx+(digit*dx),cy, btcprice[digit]-48,CLOCKCHAR);
+    }
+};

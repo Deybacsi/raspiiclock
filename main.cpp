@@ -44,11 +44,8 @@ using namespace std;
 #include "inc/backg_plasma.cpp"
 #include "inc/backg_matrix.cpp"
 #include "inc/backg_fire.cpp"
-#include "inc/backg_labyrinth.cpp"
-#include "inc/backg_gameoflife.cpp"
 #include "inc/backg_obj3d.cpp"
 
-#include "inc/foreg_cube.cpp"
 
 
 // define the effects
@@ -69,27 +66,18 @@ myfunctions background[][3] = {
     { init_bg_plasma, calc_bg_plasma, draw_bg_plasma},      // plasma
     { init_bg_matrix, calc_bg_matrix, draw_bg_matrix},      // matrix
     { init_bg_fire, calc_bg_fire, draw_bg_fire},             // fire
-    { init_bg_labyrinth, calc_bg_labyrinth, draw_bg_labyrinth},  // labyrinth
-    { init_bg_gof, calc_bg_gof, draw_bg_gof},               // game of life
     { init_bg_obj3d, calc_bg_obj3d, draw_bg_obj3d},         // 3d
  
 };
 
 
-// foreground effects
-
-myfunctions foreground[][3] = {
-    { init_fg_cube, calc_fg_cube, draw_fg_cube}             // 3D cube
-};
-
-
 // number of our effects 
 // why don't we use length()?
-const int   BG_EFFECTNO=9,
-            FG_EFFECTNO=1;
+const int   BG_EFFECTNO=7;
 
-int         ACT_BG_EFFECT=0,
-            ACT_FG_EFFECT=0;
+
+int         ACT_BG_EFFECT=0;
+
 
 
 // init all thingies
@@ -103,11 +91,10 @@ void init_all() {
     ACT_BG_EFFECT = rand() % BG_EFFECTNO;
 
     // to setup a constant effect
-    ACT_BG_EFFECT=8;
+    ACT_BG_EFFECT=6;
 
     // initialize background & foreground effects
     background[ACT_BG_EFFECT][0]();
-    foreground[ACT_FG_EFFECT][0]();
         
 }
 
@@ -117,7 +104,6 @@ int main(){
     hideCursor();
     // to store pressed keys
     char ch=0;
-    bool showForeground=false;
     string btcprice;
 
     srand(GetMilliCount());
@@ -158,24 +144,16 @@ int main(){
         background[ACT_BG_EFFECT][2]();
 
         // draw the clock
-        draw_clock_digital((SCREENX-(DIGITDESIGNS[ACTDIGITDESIGN].x*5)) /2 ,(SCREENY-DIGITDESIGNS[ACTDIGITDESIGN].y) /2);
+        //draw_clock_digital((SCREENX-(DIGITDESIGNS[ACTDIGITDESIGN].x*5)) /2 ,(SCREENY-DIGITDESIGNS[ACTDIGITDESIGN].y) /2);
+        draw_price((SCREENX-(DIGITDESIGNS[ACTDIGITDESIGN].x*5)) /2 ,(SCREENY-DIGITDESIGNS[ACTDIGITDESIGN].y) /2, btcprice);
 
-
-        // foreground effects, try 3d cube if interested
-        if (showForeground) {
-            // calculate next foreground frame
-            foreground[ACT_FG_EFFECT][1]();
-
-            // put background frame to layers
-            foreground[ACT_FG_EFFECT][2]();
-        }
 
         // write out btc price
 
         // uncomment the below line if you want BTC price display
         // don't forget to add price.sh to your crontab
 
-        //stringxy (5, float (SCREENX /2 -3), float(SCREENY /2)+5, WRITECHAR, " $"+btcprice+" " );
+        stringxy (5, float (SCREENX /2 -3), float(SCREENY /2)+5, WRITECHAR, " $"+btcprice+" " );
 
         // merge all layers and draw to screen
         mergelayers();
@@ -201,10 +179,7 @@ int main(){
                             break;
                     }
                     break;
-                case 102:
-                    showForeground=!showForeground;
-                    init_all();
-                    break;
+
             }
         }
 
