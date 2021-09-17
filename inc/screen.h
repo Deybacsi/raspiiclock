@@ -5,7 +5,7 @@
  * 
  * Or you can fine-tune it to any float value, if needed
  */
-const float SCREEN_CHAR_ASPECT_RATIO=2;
+const float SCREEN_CHAR_ASPECT_RATIO=1;
 
 
 
