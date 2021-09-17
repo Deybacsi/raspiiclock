@@ -1,10 +1,10 @@
 /*
 
-ASCII clock
+RASPII clock
 
-Dey - 2019
+Dey - 2021
 
-This was a part of my C++ learning, this is why the code is not so thoughtful at some points.
+Based on an older ASCII project:
 
 https://deybacsi.github.io/asciiclock/
 https://github.com/Deybacsi/asciiclock
@@ -71,7 +71,7 @@ myfunctions background[][3] = {
     { init_bg_fire, calc_bg_fire, draw_bg_fire},             // fire
     { init_bg_labyrinth, calc_bg_labyrinth, draw_bg_labyrinth},  // labyrinth
     { init_bg_gof, calc_bg_gof, draw_bg_gof},               // game of life
-    { init_bg_obj3d, calc_bg_obj3d, draw_bg_obj3d},
+    { init_bg_obj3d, calc_bg_obj3d, draw_bg_obj3d},         // 3d
  
 };
 
