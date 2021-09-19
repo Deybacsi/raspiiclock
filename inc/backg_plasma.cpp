@@ -10,7 +10,7 @@ int
 
 const int   PLASMALAYER     =1,             // where to draw effect - layer no
             MAXPLASMACHARS  =10,            // number of chars to draw
-            MAXPLASMACOLORS =2;             // number of colorsets
+            MAXPLASMACOLORS =1;             // number of colorsets
 
 // precalculated sin & cos datas to speed up things
 // 0..360 needed, else there will be a horizontal & vertcical "crack"
@@ -19,20 +19,6 @@ float sn[361], cs[361];
 // _.,oxOX
 
 s_simplechar PLASMACHARS[MAXPLASMACOLORS][MAXPLASMACHARS]={
-    {
-        { 32,  1,  8, false, false, false },    // dummy char 0 is for nothing
-        { 46,  C_YELLOW,  8, false, false, true },
-        { 43,  C_YELLOW,  8, false, false, true },
-        { 120, C_YELLOW, 8, false, false, true },
-
-        { 120, C_LGREEN, 8, false, false, true },
-        { 88,  C_LGREEN, 8, false, false, true },
-        { 120, C_LGREEN, 8, false, false, true },
-
-        { 120, C_YELLOW, 8, false, false, true },
-        { 43,  C_YELLOW,  8, false, false, true },
-        { 46,  C_YELLOW,  8, false, false, true }
-    },    
     {
         { 32,  1,  8, false, false, false },    // dummy char 0 is for nothing
         { 46,  C_BLUE,  8, false, false, true },

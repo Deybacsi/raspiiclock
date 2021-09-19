@@ -16,7 +16,7 @@ s_digitdesign DIGITDESIGNS[MAXDIGITDESIGNS] = {
 
 };
 
-const string CLOCKDIGIT8X8[MAXDIGITDESIGNS][12][8]={
+const string CLOCKDIGIT8X8[MAXDIGITDESIGNS][13][8]={
     {
         {
         "  xxxx  ",
@@ -125,6 +125,15 @@ const string CLOCKDIGIT8X8[MAXDIGITDESIGNS][12][8]={
         "        ",
         "        ",
         "        ",
+        "        " },
+        {
+        "   xx   ",
+        "  xxxxx ",
+        " xx     ",
+        "  xxxx  ",
+        "     xx ",
+        " xxxxx  ",
+        "   xx   ",
         "        " }
     },
     {
@@ -235,6 +244,15 @@ const string CLOCKDIGIT8X8[MAXDIGITDESIGNS][12][8]={
         "        ",
         "        ",
         "        ",
+        "        " },
+        {
+        "   xx   ",
+        "  xxxx  ",
+        "  x     ",
+        "  xxxx  ",
+        "     x  ",
+        "  xxxx  ",
+        "   xx   ",
         "        " }
     },
 
@@ -346,7 +364,16 @@ const string CLOCKDIGIT8X8[MAXDIGITDESIGNS][12][8]={
         "        ",
         "        ",
         "        ",
-        "        " }
+        "        " },
+        {
+        "   xx   ",
+        "  xxxxx ",
+        " xx     ",
+        "  xxxx  ",
+        "     xx ",
+        " xxxxxx ",
+        " xxxxx  ",
+        "   xx   " }
     }
 
       

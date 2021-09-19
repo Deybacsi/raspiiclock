@@ -77,6 +77,8 @@ const int   BG_EFFECTNO=7;
 
 
 int         ACT_BG_EFFECT=0;
+            
+
 
 
 
@@ -91,25 +93,43 @@ void init_all() {
     ACT_BG_EFFECT = rand() % BG_EFFECTNO;
 
     // to setup a constant effect
-    ACT_BG_EFFECT=6;
+    //ACT_BG_EFFECT=6;
 
     // initialize background & foreground effects
     background[ACT_BG_EFFECT][0]();
-        
+    clocky=float(rand() % (SCREENY/2 - DIGITDESIGNS[ACTDIGITDESIGN].y));
+    clockx=float(rand() % (SCREENX - DIGITDESIGNS[ACTDIGITDESIGN].x * 5));
+    pricex=float(rand() % (SCREENX - DIGITDESIGNS[ACTDIGITDESIGN].x * btcprice.length()+2));
+    //do {
+        pricey=float(rand() % (SCREENY/2 - DIGITDESIGNS[ACTDIGITDESIGN].y) + SCREENY/2);
+    //} while ((pricey+DIGITDESIGNS[ACTDIGITDESIGN].y>clocky) && (pricey<clocky+DIGITDESIGNS[ACTDIGITDESIGN].y));
+
+
 }
 
+void get_price(){
+    // get btc price
+    string line;
+    ifstream myfile ("price.txt");
+    if (myfile.is_open())
+    {
+        getline (myfile,btcprice);
+        myfile.close();
+    }
+}
 
 int main(){
     system("stty raw -echo");
     hideCursor();
     // to store pressed keys
     char ch=0;
-    string btcprice;
+
 
     srand(GetMilliCount());
 
     // elapsed time counter in msec
     int nTimeElapsed =0;
+    get_price();
     init_clock_digital();
     init_all();
     
@@ -124,41 +144,28 @@ int main(){
         checktime();
         // if minute changed, reinit everything
         if (LAST_MINSTR[0] != ACT_MINSTR[0]) {
+            get_price();
             init_clock_digital();
             init_all();
+            
         }
      
-        // get btc price
-        string line;
-        ifstream myfile ("price.txt");
-        if (myfile.is_open())
-        {
-            getline (myfile,btcprice);
-            myfile.close();
-        }
-
         // calculate next background frame
         background[ACT_BG_EFFECT][1]();
 
         // put background frame to layers
         background[ACT_BG_EFFECT][2]();
 
-        // draw the clock
-        //draw_clock_digital((SCREENX-(DIGITDESIGNS[ACTDIGITDESIGN].x*5)) /2 ,(SCREENY-DIGITDESIGNS[ACTDIGITDESIGN].y) /2);
-        draw_price((SCREENX-(DIGITDESIGNS[ACTDIGITDESIGN].x*5)) /2 ,(SCREENY-DIGITDESIGNS[ACTDIGITDESIGN].y) /2, btcprice);
 
+        // draw the clock
+        draw_clock_digital(clockx ,clocky);
 
         // write out btc price
-
-        // uncomment the below line if you want BTC price display
-        // don't forget to add price.sh to your crontab
-
-        stringxy (5, float (SCREENX /2 -3), float(SCREENY /2)+5, WRITECHAR, " $"+btcprice+" " );
+        draw_price(pricex , pricey, btcprice);
 
         // merge all layers and draw to screen
         mergelayers();
         printscreen();
-
 
         // check pressed keys
         if (keyPressed()) {

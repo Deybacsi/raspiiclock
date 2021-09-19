@@ -17,6 +17,10 @@ string  LAST_TIMESTR[MAXTIMEZONES],
         LAST_MINSTR[MAXTIMEZONES];
 
 
+string btcprice="000000";
+
+// clock & price coords
+int clockx, clocky, pricex, pricey = 0;   
 
 // get milliseconds time
 // http://www.firstobject.com/getmillicount-milliseconds-portable-c++.htm

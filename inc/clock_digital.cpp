@@ -17,9 +17,9 @@ s_simplechar CLOCKCHAR = { 32, 1, 2, true, true, false };
 s_simplechar CLOCKCLEAR = { 32, 0, 8, true, true, true};
 
 
-
 // : between hour and min - on/off
 bool colon;
+
 
 void init_clock_digital() {
     // randomize clock charset design
@@ -28,6 +28,8 @@ void init_clock_digital() {
     do {
         CLOCKCOLOR=rand() % 8;
     } while (CLOCKCOLOR == AVOIDCLOCKCOLOR || CLOCKCOLOR == 0);
+
+
 };
 
 void draw_clock_digit(int layer, int px, int py, int digit, s_simplechar chr ) {
@@ -71,7 +73,9 @@ void draw_price(int cx, int cy, string &btcprice) {
     CLOCKCHAR.bcol=CLOCKCOLOR;
     dx=DIGITDESIGNS[ACTDIGITDESIGN].x;
     dy=DIGITDESIGNS[ACTDIGITDESIGN].y;
+    //clearlayer(CLOCKLAYER,CLOCKCLEAR);
     for (digit=0; digit<btcprice.length(); digit++) {
-        draw_clock_digit(CLOCKLAYER, cx+dx+(digit*dx),cy, btcprice[digit]-48,CLOCKCHAR);
+        draw_clock_digit(CLOCKLAYER, cx,cy, 12,CLOCKCHAR);
+        draw_clock_digit(CLOCKLAYER, cx+((digit+1)*dx),cy, btcprice[digit]-48,CLOCKCHAR);
     }
 };
