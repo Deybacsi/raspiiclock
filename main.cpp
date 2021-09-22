@@ -93,17 +93,18 @@ void init_all() {
     ACT_BG_EFFECT = rand() % BG_EFFECTNO;
 
     // to setup a constant effect
-    //ACT_BG_EFFECT=6;
+    ACT_BG_EFFECT=0;
 
     // initialize background & foreground effects
     background[ACT_BG_EFFECT][0]();
-    clocky=float(rand() % (SCREENY/2 - DIGITDESIGNS[ACTDIGITDESIGN].y));
-    clockx=float(rand() % (SCREENX - DIGITDESIGNS[ACTDIGITDESIGN].x * 5));
-    pricex=float(rand() % (SCREENX - DIGITDESIGNS[ACTDIGITDESIGN].x * btcprice.length()+2));
-    //do {
-        pricey=float(rand() % (SCREENY/2 - DIGITDESIGNS[ACTDIGITDESIGN].y) + SCREENY/2);
-    //} while ((pricey+DIGITDESIGNS[ACTDIGITDESIGN].y>clocky) && (pricey<clocky+DIGITDESIGNS[ACTDIGITDESIGN].y));
 
+
+    clocky=float((SCREENY/2 - DIGITDESIGNS[ACTDIGITDESIGN].y) /2);
+    clockx=float((SCREENX - DIGITDESIGNS[ACTDIGITDESIGN].x * 5) /2);
+
+    pricey=float((SCREENY/2 - DIGITDESIGNS[ACTDIGITDESIGN].y) /2 + SCREENY/2);
+    //pricex=float((SCREENX - DIGITDESIGNS[ACTDIGITDESIGN].x * btcprice.length()+10) /2);
+    pricex=float((SCREENX - DIGITDESIGNS[ACTDIGITDESIGN].x *(btcprice.length()+1)) /2);
 
 }
 
@@ -161,6 +162,7 @@ int main(){
         draw_clock_digital(clockx ,clocky);
 
         // write out btc price
+
         draw_price(pricex , pricey, btcprice);
 
         // merge all layers and draw to screen

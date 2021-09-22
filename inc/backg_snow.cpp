@@ -78,7 +78,7 @@ void init_bg_snow(){
     // set clock transparency
     CLOCKCHAR.transpbcol=false;
     CLOCKCHAR.transpcol=true;
-    CLOCKCHAR.transpchr=true;
+    CLOCKCHAR.transpchr=false;
     // clock color can't be black
     AVOIDCLOCKCOLOR=0;
 }
