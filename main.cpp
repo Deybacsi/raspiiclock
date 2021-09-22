@@ -93,7 +93,7 @@ void init_all() {
     ACT_BG_EFFECT = rand() % BG_EFFECTNO;
 
     // to setup a constant effect
-    ACT_BG_EFFECT=0;
+    //ACT_BG_EFFECT=0;
 
     // initialize background & foreground effects
     background[ACT_BG_EFFECT][0]();
