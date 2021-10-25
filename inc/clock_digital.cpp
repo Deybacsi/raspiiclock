@@ -5,7 +5,7 @@
 const int CLOCKLAYER=2;
 
 // color of clock
-int CLOCKCOLOR=0;
+int CLOCKCOLOR=5;
 
 // color what can't be chosen during random color selection
 // background effects can change it -> and it's advised to do so
@@ -25,10 +25,13 @@ void init_clock_digital() {
     // randomize clock charset design
     ACTDIGITDESIGN=rand() % MAXDIGITDESIGNS;
     // randomize clock color
+
+    /*
     do {
         CLOCKCOLOR=rand() % 8;
     } while (CLOCKCOLOR == AVOIDCLOCKCOLOR || CLOCKCOLOR == 0);
-
+    */
+   // CLOCKCOLOR=5;
 
 };
 

@@ -76,7 +76,7 @@ myfunctions background[][3] = {
 const int   BG_EFFECTNO=7;
 
 
-int         ACT_BG_EFFECT=0;
+int         ACT_BG_EFFECT=1;
             
 
 
@@ -90,10 +90,10 @@ void init_all() {
     clearalllayer(CLEARCHAR);
 
     // get a random background effect
-    ACT_BG_EFFECT = rand() % BG_EFFECTNO;
+    //ACT_BG_EFFECT = rand() % BG_EFFECTNO;
 
     // to setup a constant effect
-    //ACT_BG_EFFECT=0;
+    //ACT_BG_EFFECT=1;  // starfield
 
     // initialize background & foreground effects
     background[ACT_BG_EFFECT][0]();
@@ -180,11 +180,34 @@ int main(){
                             cout << endl << "ESC" << ch << endl; 
                             exit(0);
                             break;
-                        case 68:
-                            cout << "Left";
+                        case 68:    // left
+                                ACT_BG_EFFECT--;
+                                if (ACT_BG_EFFECT <0 ) { ACT_BG_EFFECT=BG_EFFECTNO-1; }
+                                get_price();
+                                init_clock_digital();
+                                init_all();
                             break;
-                        case 67:
-                            cout << "Right";
+                        case 67:    // right
+                            
+                                ACT_BG_EFFECT++;
+                                if (ACT_BG_EFFECT > BG_EFFECTNO-1) { ACT_BG_EFFECT=0; }
+                                get_price();
+                                init_clock_digital();
+                                init_all();
+                            break;
+                        case 65:    // up
+                                CLOCKCOLOR++;
+                                if (CLOCKCOLOR > 7) { CLOCKCOLOR=0; }
+                                get_price();
+                                init_clock_digital();
+                                init_all();
+                            break;
+                        case 66:    // down
+                                CLOCKCOLOR--;
+                                if (CLOCKCOLOR <0 ) { CLOCKCOLOR=7; }
+                                get_price();
+                                init_clock_digital();
+                                init_all();
                             break;
                     }
                     break;
