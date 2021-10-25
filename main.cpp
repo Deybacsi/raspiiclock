@@ -76,7 +76,7 @@ myfunctions background[][3] = {
 const int   BG_EFFECTNO=7;
 
 
-int         ACT_BG_EFFECT=1;
+int         ACT_BG_EFFECT=0;
             
 
 
